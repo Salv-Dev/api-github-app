@@ -1,0 +1,327 @@
+/* reset and variables*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--white-color);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+
+    /* variables */
+    --first-gradient: linear-gradient(to right bottom, #365B6F, #365B6F, #2A2060);
+    --white-color: #fff;
+    --white-opacity-color: rgba(255, 255, 255, 0.1);
+    --primary-color: #25F3ED;
+    --secondary-color: #45617D;
+}
+
+/* body background */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background-image: var(--first-gradient);
+    background-repeat: no-repeat;
+}
+
+/* content */
+/* container */
+.app-container {
+    position: relative;
+    width: 40%;
+    height: 95vh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.app-container > .filter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white-opacity-color);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+/* search */
+.search {
+    position: relative;
+    width: 100%;
+    padding: 0 20px 0 20px;
+    overflow: hidden;
+}
+
+.search > .input {
+    position: relative;
+    display: flex;
+    width: 100%;
+    
+}
+
+.search > .input > .icon-search {
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    stroke: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.search > .input > .icon-search:hover,
+.search > .input > input:focus ~ .icon-search:hover {
+    stroke: var(--white-color);
+    transition: stroke .2s ease-in-out;
+}
+
+.search > .input > .effect {
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 0 0 var(--primary-color), 
+                0 0 0 0 var(--primary-color);
+    background-color: var(--primary-color);
+    z-index: -1
+}
+
+.search > .input > input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+    padding: 15px 0 15px 35px;
+    border-bottom: 1px solid var(--white-opacity-color);
+    outline: none;
+}
+
+.search > .input > input:focus ~ .effect{
+    opacity: 1;
+    box-shadow: 0 0 0 100vw var(--primary-color), 
+                0 0 0 100vh var(--primary-color);
+    transition: box-shadow 1s ease-in-out .01s,
+                opacity .01s ease-in-out;
+}
+
+.search > .input > input:focus ~ .icon-search {
+    stroke: var(--secondary-color);
+    transition: stroke .2s ease-in-out;
+}
+
+.search > .input > input:focus {
+    color: var(--secondary-color);
+    border-bottom: 1px solid transparent;
+    transition: color .2s ease-in-out,
+                border-bottom .2s ease-in-out;
+}
+
+/* user-info */
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 20px 40px 20px;
+}
+
+.user-info > .photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 8px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px var(--secondary-color);
+    overflow: hidden;
+}
+
+.user-info > .photo > img {
+    height: 200px;
+}
+
+.user-info > .infos {
+    width: 50%;
+}
+
+.user-info > .infos > .username {
+    font-weight: 300;
+    font-size: 1.4rem;
+
+}
+
+.user-info > .infos > .username > a {
+    text-decoration: none;
+    transition: color .2s ease-in-out;
+}
+
+.user-info > .infos > .username > a:hover {
+    color: var(--primary-color);
+}
+
+.user-info > .infos > .login {
+    font-weight: 300;
+    font-size: 0.7rem;
+    line-height: 10px;
+}
+
+.user-info > .infos > .info-repos {
+    margin: 20px 0;
+    border-top: 1px solid var(--white-opacity-color);
+    border-bottom: 1px solid var(--white-opacity-color);
+    list-style: none;
+    padding: 20px 0;
+}
+
+.user-info > .infos > .info-repos > li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-info > .infos > .info-repos > li:last-child {
+    margin-bottom: 0;
+}
+
+.user-info > .infos > .info-repos > li > span {
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.user-info > .infos > .website > a {
+    font-size: 0.8rem;
+    text-decoration: none;
+    text-transform: lowercase;
+}
+
+.user-info > .infos > .website > a:hover,
+.user-info > .infos > .website > a:active {
+    color: var(--primary-color);
+}
+
+/* actions */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+}
+
+.actions > button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 49%;
+    padding: 10px;
+    font-size: 0.7rem;
+    border: none;
+    background-color: var(--white-opacity-color);
+    cursor: pointer;
+    outline: none;
+    transition: background-color .2s ease-in-out;
+}
+
+.actions > button:hover,
+.actions > button:active {
+    background-color: var(--primary-color);
+}
+
+.actions > button:hover > .icon-button,
+.actions > button:active > .icon-button,
+.actions > button:hover > p,
+.actions > button:active > p {
+    color: var(--secondary-color);
+    stroke: var(--secondary-color);
+}
+
+.actions > button > .icon-button {
+    transition: stroke .2s ease-in-out;
+}
+
+.actions > button > p {
+    text-align: center;
+    transition: color .2s ease-in-out;
+}
+
+.active {
+    background-color: var(--primary-color);
+}
+
+/* repo-list */
+.repo-list {
+    margin: 20px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.repo-list > h4 {
+    font-weight: 300;
+    font-size: 0.7rem;
+    margin-bottom: 20px;
+}
+
+.repo-list > .repos {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.repo-list > .repos > .repo {
+    width: 49%;
+    margin-bottom: 10px;
+    background-color: var(--white-opacity-color);
+    padding: 10px;
+}
+
+.repo-list > .repos > .repo > h2 {
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+.repo-list > .repos > .repo > h5 {
+    font-weight: 300;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.repo-list > .repos > .repo > .line {
+    width: 20px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 10px 0;
+}
+
+.repo-list > .repos > .repo > p {
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+}
+
+.repo-list > .repos > .repo > p > span {
+    margin: 0 10px 0 5px; 
+}
+
+.repo-list > .repos > .repo > p > .share {
+    transform: rotate(-90deg);
+}
+
+.repo-list > .repos > .loading-repo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 2px 0 0 0;
+    border-top: 1px solid var(--white-opacity-color);
+}
+
+.repo-list > .repos > .loading-repo > .chevron{
+    stroke: var(--white-opacity-color);
+    margin-top: 5px;
+    cursor: pointer;
+    transition: stroke .2s ease-in-out;
+}
+
+.repo-list > .repos > .loading-repo > .chevron:hover,
+.repo-list > .repos > .loading-repo > .chevron:active {
+    stroke: var(--white-color);
+}
