@@ -43,34 +43,32 @@ class App extends React.Component {
           <div className="repo-list">
             <h4>Repositórios:</h4>
             <div className="repos">
-              <div className="repo">
+              <a className="repo">
                 <h2>Nome do repo</h2>
                 <h5>Descrição do repositório</h5>
                 <div className="line"></div>
                 <p><Icon.Star color="#25F3ED" size={18}/> <span>100</span><Icon.Share2 className="share" color="#25F3ED" size={18}/><span> 100</span></p>
-              </div>
-              <div className="repo">
+              </a>
+              <a className="repo">
                 <h2>Nome do repo</h2>
                 <h5>Descrição do repositório</h5>
                 <div className="line"></div>
                 <p><Icon.Star color="#25F3ED" size={18}/> <span>100</span><Icon.Share2 className="share" color="#25F3ED" size={18}/><span> 100</span></p>
-              </div>
-              <div className="repo">
+              </a>
+              <a className="repo">
                 <h2>Nome do repo</h2>
                 <h5>Descrição do repositório</h5>
                 <div className="line"></div>
                 <p><Icon.Star color="#25F3ED" size={18}/> <span>100</span><Icon.Share2 className="share" color="#25F3ED" size={18}/><span> 100</span></p>
-              </div>
-              <div className="repo">
+              </a>
+              <a className="repo">
                 <h2>Nome do repo</h2>
                 <h5>Descrição do repositório</h5>
                 <div className="line"></div>
                 <p><Icon.Star color="#25F3ED" size={18}/> <span>100</span><Icon.Share2 className="share" color="#25F3ED" size={18}/><span> 100</span></p>
-              </div>
-              <div className="loading-repo">
-                <Icon.ChevronDown className="chevron"/>
-              </div>
+              </a>
             </div>
+            <Icon.ChevronDown className="chevron"/>
           </div>
         </div>  
       </div>

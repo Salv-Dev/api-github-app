@@ -252,9 +252,11 @@ body {
     margin: 20px 20px 0 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .repo-list > h4 {
+    align-self: flex-start;
     font-weight: 300;
     font-size: 0.7rem;
     margin-bottom: 20px;
@@ -265,6 +267,7 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;
     overflow: hidden;
+    border-bottom: 1px solid var(--white-opacity-color);
 }
 
 .repo-list > .repos > .repo {
@@ -272,16 +275,23 @@ body {
     margin-bottom: 10px;
     background-color: var(--white-opacity-color);
     padding: 10px;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+}
+
+.repo-list > .repos > .repo:hover,
+.repo-list > .repos > .repo:active {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .repo-list > .repos > .repo > h2 {
     font-weight: 300;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .repo-list > .repos > .repo > h5 {
     font-weight: 300;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     color: rgba(255, 255, 255, 0.5);
 }
 
@@ -306,22 +316,13 @@ body {
     transform: rotate(-90deg);
 }
 
-.repo-list > .repos > .loading-repo {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 2px 0 0 0;
-    border-top: 1px solid var(--white-opacity-color);
-}
-
-.repo-list > .repos > .loading-repo > .chevron{
+.repo-list > .repos ~ .chevron{
     stroke: var(--white-opacity-color);
-    margin-top: 5px;
     cursor: pointer;
     transition: stroke .2s ease-in-out;
 }
 
-.repo-list > .repos > .loading-repo > .chevron:hover,
-.repo-list > .repos > .loading-repo > .chevron:active {
+.repo-list > .repos ~ .chevron:hover,
+.repo-list > .repos ~ .chevron:active {
     stroke: var(--white-color);
 }
