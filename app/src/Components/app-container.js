@@ -2,6 +2,11 @@
 
 import React, {PropTypes} from 'react';
 
-const AppContainer = () => {};
+const AppContainer = () => (
+    <div className="app-container">
+        <div className="filter">
+        </div>  
+      </div>
+);
 
 export default AppContainer;
