@@ -23,6 +23,7 @@ body {
     height: 100vh;
     background-image: var(--first-gradient);
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* content */
@@ -32,7 +33,6 @@ body {
     width: 40%;
     height: 95vh;
     margin: 0 auto;
-    overflow: hidden;
 }
 
 .app-container > .filter {
@@ -42,6 +42,31 @@ body {
     background-color: var(--white-opacity-color);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+}
+
+.app-container > .filter > .loading-repos {
+    width: 100%;
+    padding: 0px 20px 5px 20px;
+    background-repeat: no-repeat;
+}
+
+.app-container > .filter > .loading-repos > .container-chevron {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-top: 1px solid var(--white-opacity-color);
+    padding: 5px 0;
+}
+
+.app-container > .filter > .loading-repos > .container-chevron > .chevron{
+    stroke: var(--white-opacity-color);
+    cursor: pointer;
+    transition: stroke .2s ease-in-out;
+}
+
+.app-container > .filter > .loading-repos > .container-chevron > .chevron:hover,
+.app-container > .filter > .loading-repos > .container-chevron > .chevron:active {
+    stroke: var(--white-color);
 }
 
 /* search */
@@ -266,8 +291,8 @@ body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    overflow: hidden;
-    border-bottom: 1px solid var(--white-opacity-color);
+    height: 185px;
+    overflow: auto;
 }
 
 .repo-list > .repos > .repo {
@@ -314,15 +339,4 @@ body {
 
 .repo-list > .repos > .repo > p > .share {
     transform: rotate(-90deg);
-}
-
-.repo-list > .repos ~ .chevron{
-    stroke: var(--white-opacity-color);
-    cursor: pointer;
-    transition: stroke .2s ease-in-out;
-}
-
-.repo-list > .repos ~ .chevron:hover,
-.repo-list > .repos ~ .chevron:active {
-    stroke: var(--white-color);
 }
