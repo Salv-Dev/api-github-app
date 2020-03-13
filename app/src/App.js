@@ -9,12 +9,20 @@ class App extends React.Component {
     this.state = {
       userinfo: null,
       repos: [],
-      starred: []
+      starred: [],
+      isFetching: false,
+      isFetchingRepos: false
     }
   }
 
   handleSearch(e) {
     if(e.keyCode === 13){
+      this.setState({
+        userinfo: null,
+        repos: [],
+        starred: [],
+        isFetching: true
+      })
       Ajax(`https://api.github.com/users/${e.target.value}`).then(result => {
         this.setState({
           userinfo: {
@@ -27,11 +35,15 @@ class App extends React.Component {
             blog: result.blog 
           },
           repos: [],
-          starred: []
+          starred: [],
+          isFetching: false
         })
       })
       .catch(err => {
         console.error(err);
+        this.setState({
+          isFetching: false
+        })
       })
       e.target.value = "";
     }
@@ -41,7 +53,8 @@ class App extends React.Component {
     return (e) => {
       this.setState({
         repos: [],
-        starred: []
+        starred: [],
+        isFetchingRepos: true
       })
       Ajax(`https://api.github.com/users/${this.state.userinfo.login}/${type}`).then(result => {
         this.setState({
@@ -55,11 +68,15 @@ class App extends React.Component {
             }
           }),
           
-          [type === 'repos'?'starred':'repos']:[]
+          [type === 'repos'?'starred':'repos']:[],
+          isFetchingRepos: false
         })
       })
       .catch(err => {
         console.error(err);
+        this.setState({
+          isFetchingRepos: false
+        })
       })
     }
   }
@@ -73,6 +90,8 @@ class App extends React.Component {
         handleSearch={(e) => this.handleSearch(e)}
         getRepos={this.getRepos('repos')}
         getStarred={this.getRepos('starred')}
+        isFetching={this.state.isFetching}
+        isFetchingRepos={this.state.isFetchingRepos}
       />
     )
   }
