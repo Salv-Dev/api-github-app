@@ -8,7 +8,7 @@ const UserInfo = ({userinfo}) => (
               <img src={userinfo.photo} alt="profile-pic" />
         </div>
         <div className="infos">
-            <h1 className="username"><a href={`https://github.com/${userinfo.login}`} target="_blank">{userinfo.username}</a></h1>
+            <h1 className="username"><a href={`https://github.com/${userinfo.login}`} title={userinfo.username} target="_blank">{userinfo.username? (userinfo.username.length > 10? `${userinfo.username.substr(0, 10)}...`:userinfo.username):'no name'}</a></h1>
             <h3 className="login">{userinfo.login}</h3>
             <ul className="info-repos">
                 <li><Icon.Book color="#25F3ED" size={18}/><span>{userinfo.repos}</span></li>

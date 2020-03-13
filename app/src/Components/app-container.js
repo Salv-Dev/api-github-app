@@ -17,7 +17,7 @@ const AppContainer = ({handleSearch, userinfo, repos, starred, getRepos, getStar
             {!!repos.length && <RepoList title="Repositórios:" repos={repos} />}
             {!!starred.length && <RepoList title="Favoritos:" repos={starred} />}
 
-            {!!repos.length && 
+            {(!!repos.length || repos.length > 2) && 
             <div className="loading-repos">
                 <div className="container-chevron">
                     <Icon.ChevronDown className="chevron"/>
