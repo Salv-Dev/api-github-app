@@ -11,7 +11,9 @@ class App extends React.Component {
       repos: [],
       starred: [],
       isFetching: false,
-      isFetchingRepos: false
+      isFetchingRepo: false,
+      isFetchingStarred: false,
+      chevronClick: 'start'
     }
   }
 
@@ -21,7 +23,8 @@ class App extends React.Component {
         userinfo: null,
         repos: [],
         starred: [],
-        isFetching: true
+        isFetching: true,
+        chevronClick: ''
       })
       Ajax(`https://api.github.com/users/${e.target.value}`).then(result => {
         this.setState({
@@ -54,9 +57,11 @@ class App extends React.Component {
       this.setState({
         repos: [],
         starred: [],
-        isFetchingRepos: true
+        chevronClick: '',
+        [type === 'repos'?'isFetchingRepo':'isFetchingStarred']:true
       })
       Ajax(`https://api.github.com/users/${this.state.userinfo.login}/${type}`).then(result => {
+        console.log(result);
         this.setState({
           [type]: result.map(repo => {
             return {
@@ -69,15 +74,28 @@ class App extends React.Component {
           }),
           
           [type === 'repos'?'starred':'repos']:[],
-          isFetchingRepos: false
+          
+          [type === 'repos'?'isFetchingRepo':'isFetchingStarred']:false
         })
       })
       .catch(err => {
         console.error(err);
         this.setState({
-          isFetchingRepos: false
+          [type === 'repos'?'isFetchingRepo':'isFetchingStarred']:false
         })
       })
+    }
+  }
+
+  chevronClick(e) {
+    if(this.state.chevronClick === ''){
+      this.setState({
+        chevronClick: 'act'
+      });
+    } else {
+      this.setState({
+        chevronClick: ''
+      });
     }
   }
 
@@ -91,7 +109,10 @@ class App extends React.Component {
         getRepos={this.getRepos('repos')}
         getStarred={this.getRepos('starred')}
         isFetching={this.state.isFetching}
-        isFetchingRepos={this.state.isFetchingRepos}
+        isFetchingRepo={this.state.isFetchingRepo}
+        isFetchingStarred={this.state.isFetchingStarred}
+        chevron={this.state.chevronClick}
+        chevronClick={(e) => this.chevronClick(e)}
       />
     )
   }

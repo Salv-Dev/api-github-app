@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Icon from 'react-feather';
 
-const Search = ({handleSearch, isDisabled}) => (
-    <div className="search">
+const Search = ({handleSearch, isDisabled, chevron}) => (
+    <div className={`search ${chevron}`}>
       <div className="input">
           <input type="text" onKeyUp={handleSearch} disabled={isDisabled}/>
           <Icon.Search className="icon-search" size={22}/>

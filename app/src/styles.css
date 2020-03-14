@@ -13,17 +13,29 @@
     --white-opacity-color: rgba(255, 255, 255, 0.1);
     --primary-color: #25F3ED;
     --secondary-color: #45617D;
+    --primary-color-dark: #24D1CC; 
 }
 
 /* body background */
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 100vh;
     background-image: var(--first-gradient);
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+/* app name */
+.app-name {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: rotate(-90deg);
+    transform-origin: bottom right;
+    font-weight: 700;
+    padding: 10px;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
 }
 
 /* content */
@@ -32,25 +44,28 @@ body {
     position: relative;
     width: 40%;
     height: 95vh;
-    margin: 0 auto;
-}
-
-.app-container > .filter {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     background-color: var(--white-opacity-color);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    margin: 10px auto;
 }
 
-.app-container > .filter > .loading-repos {
+.app-container.act {
+    height: auto;
+}
+
+.app-container.start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.app-container > .loading-repos {
     width: 100%;
     padding: 0px 20px 5px 20px;
     background-repeat: no-repeat;
 }
 
-.app-container > .filter > .loading-repos > .container-chevron {
+.app-container > .loading-repos > .container-chevron {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -58,14 +73,18 @@ body {
     padding: 5px 0;
 }
 
-.app-container > .filter > .loading-repos > .container-chevron > .chevron{
+.app-container > .loading-repos > .container-chevron > .btn-chevron > .chevron{
     stroke: var(--white-opacity-color);
     cursor: pointer;
     transition: stroke .2s ease-in-out;
 }
 
-.app-container > .filter > .loading-repos > .container-chevron > .chevron:hover,
-.app-container > .filter > .loading-repos > .container-chevron > .chevron:active {
+.app-container > .loading-repos > .container-chevron > .btn-chevron > .chevron.act {
+    transform: rotate(180deg);
+}
+
+.app-container > .loading-repos > .container-chevron > .btn-chevron > .chevron:hover,
+.app-container > .loading-repos > .container-chevron > .btn-chevron > .chevron:active {
     stroke: var(--white-color);
 }
 
@@ -75,6 +94,13 @@ body {
     width: 100%;
     padding: 0 20px 0 20px;
     overflow: hidden;
+}
+.search.start {
+    background-color: var(--white-opacity-color);
+}
+
+.search.start > .input > input {
+    border-bottom: none;
 }
 
 .search > .input {
@@ -234,10 +260,10 @@ body {
 
 .actions > button {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 49%;
-    padding: 10px;
+    padding: 10px 15px;
     font-size: 0.7rem;
     border: none;
     background-color: var(--white-opacity-color);
@@ -292,11 +318,17 @@ body {
     flex-direction: column;
     width: 100%;
     height: 185px;
-    overflow: auto;
+    overflow: hidden;
+}
+
+.repo-list > .repos.act {
+    height: auto;
+    overflow: none;
 }
 
 .repo-list > .repos > .repo {
     margin-bottom: 10px;
+    text-decoration: none;
     background-color: var(--white-opacity-color);
     padding: 10px;
     cursor: pointer;
@@ -310,12 +342,12 @@ body {
 
 .repo-list > .repos > .repo > h2 {
     font-weight: 300;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .repo-list > .repos > .repo > h5 {
     font-weight: 300;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: rgba(255, 255, 255, 0.5);
 }
 
@@ -329,7 +361,7 @@ body {
 .repo-list > .repos > .repo > p {
     display: flex;
     align-items: center;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
 
 .repo-list > .repos > .repo > p > span {
@@ -340,15 +372,26 @@ body {
     transform: rotate(-90deg);
 }
 
+i {
+    width: 20px;
+    height: 20px;
+}
+
 .loading {
-    width: 25px;
-    height: 25px;
-    margin: 20px auto;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
+    border: 2px solid var(--primary-color-dark);
+    border-left-color: var(--secondary-color);
+    border-top-color: var(--secondary-color);
+    animation: loading .7s infinite linear; 
+}
+
+.loading.--search {
+    margin: 20px auto;
     border: 2px solid var(--white-opacity-color);
     border-left-color: var(--primary-color);
     border-top-color: var(--primary-color);
-    animation: loading .7s infinite linear; 
 }
 
 @keyframes loading {

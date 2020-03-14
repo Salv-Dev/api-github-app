@@ -1,15 +1,13 @@
-'use strict';
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Icon from 'react-feather';
 
-const RepoList = ({title, repos}) => (
+const RepoList = ({title, repos, chevron}) => (
     <div className="repo-list">
             <h4>{title}</h4>
-            <div className="repos">
+            <div className={`repos ${chevron}`}>
             {repos.map((repo, index) => (
-              <a key={index} className="repo">
+              <a key={index} className="repo" target="_blank" rel="noopener noreferrer" href={repo.url}>
                 <h2>{repo.name}</h2>
                 <h5>{repo.desc}</h5>
                 <div className="line"></div>

@@ -6,35 +6,36 @@ import UserInfo from './user-info';
 import Actions from './actions';
 import RepoList from './repo-list';
 
-const AppContainer = ({handleSearch, userinfo, repos, starred, getRepos, getStarred, isFetching, isFetchingRepos}) => (
-    <div className="app-container">
-        <div className="filter">
+const AppContainer = ({handleSearch, userinfo, repos, starred, getRepos, getStarred, isFetching, isFetchingRepo,isFetchingStarred, chevron, chevronClick}) => (
+    <div className={`app-container ${chevron}`}>
 
-            <Search handleSearch={handleSearch} isDisabled={isFetching}/>
-            {isFetching && <div className="loading" />}
+            <Search handleSearch={handleSearch} isDisabled={isFetching} chevron={chevron}/>
+            {isFetching && <div className="loading --search" />}
             {!!userinfo && <UserInfo userinfo={userinfo} />}
-            {!!userinfo && <Actions getRepos={getRepos} getStarred={getStarred}/>}
+            {!!userinfo && <Actions getRepos={getRepos} getStarred={getStarred} isFetchingRepo={isFetchingRepo} isFetchingStarred={isFetchingStarred}/>}
 
-            {isFetchingRepos && <div className="loading" />}
-            {!!repos.length && <RepoList title="Repositórios:" repos={repos} />}
-            {!!starred.length && <RepoList title="Favoritos:" repos={starred} />}
+            {!!repos.length && <RepoList title="Repositórios:" repos={repos} chevron={chevron}/>}
+            {!!starred.length && <RepoList title="Favoritos:" repos={starred} chevron={chevron}/>}
 
             {(!!repos.length && repos.length > 2) && 
             <div className="loading-repos">
                 <div className="container-chevron">
-                    <Icon.ChevronDown className="chevron"/>
+                    <div className="btn-chevron" onClick={chevronClick}>
+                        <Icon.ChevronDown className={`chevron ${chevron}`}/>
+                    </div>
                 </div>
             </div>
             }
 
             {!!starred.length && 
-            <div className="loading-repos">
+                <div className="loading-repos">
                 <div className="container-chevron">
-                    <Icon.ChevronDown className="chevron"/>
+                    <div className="btn-chevron" onClick={chevronClick}>
+                        <Icon.ChevronDown className={`chevron ${chevron}`}/>
+                    </div>
                 </div>
             </div>
             }
-        </div>  
     </div>
 );
 
@@ -46,7 +47,8 @@ AppContainer.propTypes = {
     getRepos: PropTypes.func.isRequired,
     getStarred: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    isFetchingRepos: PropTypes.bool.isRequired
+    isFetchingRepo: PropTypes.bool.isRequired,
+    isFetchingStarred: PropTypes.bool.isRequired
 }
 
 export default AppContainer;
