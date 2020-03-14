@@ -20,7 +20,8 @@ const RepoList = ({title, repos, chevron}) => (
 
 RepoList.propTypes = {
     title: PropTypes.string.isRequired,
-    repos: PropTypes.array.isRequired
+    repos: PropTypes.array.isRequired,
+    chevron: PropTypes.string.isRequired
 }
 
 export default RepoList;

@@ -13,7 +13,8 @@ class App extends React.Component {
       isFetching: false,
       isFetchingRepo: false,
       isFetchingStarred: false,
-      chevronClick: 'start'
+      chevronClick: 'start',
+      btnRepoActiveType: ''
     }
   }
 
@@ -24,7 +25,8 @@ class App extends React.Component {
         repos: [],
         starred: [],
         isFetching: true,
-        chevronClick: ''
+        chevronClick: '',
+        btnRepoActiveType: ''
       })
       Ajax(`https://api.github.com/users/${e.target.value}`).then(result => {
         this.setState({
@@ -58,6 +60,7 @@ class App extends React.Component {
         repos: [],
         starred: [],
         chevronClick: '',
+        btnRepoActiveType: type,
         [type === 'repos'?'isFetchingRepo':'isFetchingStarred']:true
       })
       Ajax(`https://api.github.com/users/${this.state.userinfo.login}/${type}`).then(result => {
@@ -113,6 +116,7 @@ class App extends React.Component {
         isFetchingStarred={this.state.isFetchingStarred}
         chevron={this.state.chevronClick}
         chevronClick={(e) => this.chevronClick(e)}
+        btnRepoActive={this.state.btnRepoActiveType}
       />
     )
   }

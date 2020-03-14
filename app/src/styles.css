@@ -43,7 +43,7 @@ body {
 .app-container {
     position: relative;
     width: 40%;
-    height: 95vh;
+    height: 97vh;
     background-color: var(--white-opacity-color);
     margin: 10px auto;
 }
@@ -270,6 +270,18 @@ body {
     cursor: pointer;
     outline: none;
     transition: background-color .2s ease-in-out;
+}
+
+.actions > button.active {
+    background-color: var(--primary-color);
+}
+
+.actions > button.active > .icon-button,
+.actions > button.active > .icon-button,
+.actions > button.active > p,
+.actions > button.active > p {
+    color: var(--secondary-color);
+    stroke: var(--secondary-color);
 }
 
 .actions > button:hover,
