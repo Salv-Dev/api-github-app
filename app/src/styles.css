@@ -43,9 +43,10 @@ body {
 .app-container {
     position: relative;
     width: 40%;
-    height: 97vh;
+    height: 100vh;
     background-color: var(--white-opacity-color);
-    margin: 10px auto;
+    margin: 0 auto;
+    padding-bottom: 10px;
 }
 
 .app-container.act {
@@ -314,6 +315,7 @@ body {
 .repo-list {
     margin: 20px 20px 0 20px;
     display: flex;
+    height: 32%;
     flex-direction: column;
     align-items: center;
 }
@@ -329,7 +331,6 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 185px;
     overflow: hidden;
 }
 
@@ -413,4 +414,90 @@ i {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* media queries */
+/* responsive height */
+@media screen and (max-height: 600px) {
+    .app-container {
+        height: auto;
+    }
+
+    .repo-list > .repos {
+        height: auto;
+        overflow: none;
+    }
+
+    .app-container > .loading-repos > .container-chevron {
+        display: none;
+    }
+}
+
+/* responsive width */
+@media screen and (max-width: 1150px){
+    .user-info > .photo {
+        width: 170px;
+        height: 170px;
+    }
+
+    .repo-list {
+        height: 30%;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    .app-container {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 910px){
+    .app-container {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .app-container {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 645px){
+    .app-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 520px){
+    .app-name {
+        display: none;
+    }
+
+    .app-container {
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+    }
+
+    .app-container > .loading-repos > .container-chevron {
+        display: none;
+    }
+
+    .user-info {
+        flex-direction: column;
+    }
+
+    .user-info > .infos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    .repo-list > .repos {
+        height: auto;
+        overflow: none;
+    }
+
 }
